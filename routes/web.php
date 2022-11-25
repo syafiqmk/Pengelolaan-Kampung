@@ -15,3 +15,8 @@ use App\Http\Controllers\GeneralController;
 */
 
 Route::get('/', [GeneralController::class, "welcome"]);
+
+// Auth Route
+Route::name("auth.")->group(function() {
+    Route::get("/login", [GeneralController::class, "login"])->name("login");
+});

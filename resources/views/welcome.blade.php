@@ -31,7 +31,7 @@
             <h1 class="text-capitalize text-white">pengelolaan kampung</h1>
             <h6 class="text-white text-capitalize">satu aplikasi untuk interaksi warga kampung</h6>
             <div class="col">
-                <a href="" class="btn bg-dark text-white">Get Started</a>
+                <a href="{{ route("auth.login") }}" class="btn bg-dark text-white">Get Started</a>
             </div>
         </div>
     </div>

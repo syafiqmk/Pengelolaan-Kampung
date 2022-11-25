@@ -11,4 +11,10 @@ class GeneralController extends Controller
             'title' => "Aplikasi Pengelolaan Kampung"
         ]);
     }
+
+    public function login() {
+        return view("auth.login", [
+            "title" => "Login"
+        ]);
+    }
 }
