@@ -16,25 +16,8 @@
     <script src="https://kit.fontawesome.com/c8ae339e7b.js" crossorigin="anonymous"></script>
     {{-- sweetalert2 --}}
     <script src="https://kit.fontawesome.com/c8ae339e7b.js" crossorigin="anonymous"></script>
-
-    {{-- custom style --}}
-    <style>
-        #main-section {
-            background-color: #1363DF;
-        }
-    </style>
 </head>
 <body>
-
-    <div class="container-fluid d-flex min-vh-100 align-items-center justify-content-center my-auto" id="main-section">
-        <div class="row text-center">
-            <h1 class="text-capitalize text-white">pengelolaan kampung</h1>
-            <h6 class="text-white text-capitalize">satu aplikasi untuk interaksi warga kampung</h6>
-            <div class="col">
-                <a href="" class="btn bg-dark text-white">Get Started</a>
-            </div>
-        </div>
-    </div>
 
     {{-- links --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
