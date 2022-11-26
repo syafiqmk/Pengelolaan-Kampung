@@ -17,7 +17,7 @@
             <p>Daftarkan kampung untuk mempermudah penyebaran informasi dan memberikan layanan tambahan seperti laporan darurat dan pengaduan masyarakat.</p>
         </div>
         <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <a href="" class="btn btn-primary">Daftar</a>
+            <a href="{{ route('auth.regisKampung') }}" class="btn btn-primary">Daftar</a>
         </div>
     </div>
 

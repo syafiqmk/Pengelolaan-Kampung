@@ -19,16 +19,21 @@ Route::get('/', [GeneralController::class, "welcome"]);
 
 // Auth Route
 Route::name("auth.")->controller(AuthController::class)->group(function() {
-    // Login
-    Route::get("/login", "login")->name("login");
-    Route::post("/login", "loginProcess")->name("loginProcess");
 
-    // Register
-    Route::get("/register", "register")->name("register");
-
-    // User Registration
-
-    // Operator Registration
-
-    // Kampung Registration
-})->middleware("guest");
+    Route::middleware('guest')->group(function() {
+        // Login
+        Route::get("/login", "login")->name("login");
+        Route::post("/login", "loginProcess")->name("loginProcess");
+    
+        // Register
+        Route::get("/register", "register")->name("register");
+    
+        // User Registration
+    
+        // Operator Registration
+    
+        // Kampung Registration
+        Route::get("/kampung-regis", "regisKampung")->name('regisKampung');
+        Route::post("/kampung-regis", "regisKampungProcess")->name('regisKampungProcess');
+    });
+});
