@@ -20,7 +20,7 @@
 <body>
     
     <div class="container-fluid mb-5">
-        @include('template.components.auth.navbar')
+        @include('components.auth.navbar')
     </div>
     <div class="container">
         @yield('body')

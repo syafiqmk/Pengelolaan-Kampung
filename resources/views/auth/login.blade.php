@@ -5,7 +5,7 @@
         <div class="col-md-4 mt-5">
             <h4>Login</h4>
 
-            @include('template.components.alerts')
+            @include('components.alerts')
 
             <form action="" method="post">
                 @csrf
@@ -24,19 +24,11 @@
                     @enderror --}}
                 </div>
                 <div class="mb-3">
-                    <label for="">Role</label>
-                    <select name="role" id="" class="form-select">
-                        <option value="user">User</option>
-                        <option value="admin kampung">Admin Kampung</option>
-                        <option value="operator">Operator</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary float-end">Login</button><br>
                 </div>
             </form>
 
-            <p class="text-center">Belum punya akun? <a href="">Register!</a></p>
+            <p>Belum punya akun? <a href="">Register!</a></p>
 
         </div>
         
