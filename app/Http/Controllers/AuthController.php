@@ -73,19 +73,19 @@ class AuthController extends Controller
             'address' => 'required'
         ]);
 
+        $village = Village::create([
+            'name' => $validate['namaKampung'],
+            'address' => $validate['address']
+        ]);
+        
         $user = User::create([
             'name' => $validate['name'],
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
             'address' => $validate['address'],
             'role' => "Admin Kampung",
-            'status' => "Waiting"
-        ]);
-
-        $village = Village::create([
-            'name' => $validate['namaKampung'],
-            'address' => $validate['address'],
-            'admin_id' => $user->id
+            'status' => "Waiting",
+            'village_id' => $village->id
         ]);
 
         if($user AND $village) {

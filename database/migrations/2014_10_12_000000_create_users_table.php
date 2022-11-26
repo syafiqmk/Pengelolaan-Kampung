@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text("address")->nullable();
             $table->enum("role", ["Admin", "Admin Kampung", "Operator", "User"]);
             $table->enum("status", ["Waiting", "Granted"]);
+            $table->foreignId("village_id")->nullable()->constrained("villages");
             $table->rememberToken();
             $table->timestamps();
         });

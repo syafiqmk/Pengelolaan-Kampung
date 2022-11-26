@@ -25,6 +25,22 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
+    public function village() {
+        return $this->hasOne(Village::class, 'village_id');
+    }
+
+    public function complaint() {
+        return $this->hasMany(Complaint::class);
+    }
+
+    public function emergency() {
+        return $this->hasMany(Emergency::class);
+    }
+
+    public function emergency_response() {
+        return $this->hasMany(EmergencyResponse::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

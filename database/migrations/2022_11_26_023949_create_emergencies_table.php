@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('emergencies', function (Blueprint $table) {
             $table->id();
             $table->text("description");
-            $table->text("latitude");
-            $table->text("longitude");
+            $table->text("location");
             $table->enum("type", ["Bencana Alam", "Pemadam Kebakaran", "Ambulans", "Polisi"]);
             $table->enum("status", ["Dilaporkan", "Proses", "Selesai"]);
             $table->foreignId("user_id")->constrained("users");

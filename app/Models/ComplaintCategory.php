@@ -10,4 +10,8 @@ class ComplaintCategory extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function complaint() {
+        return $this->hasMany(Complaint::class);
+    }
 }

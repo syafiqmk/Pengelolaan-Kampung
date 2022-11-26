@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_villages', function (Blueprint $table) {
+        Schema::create('villages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("village_id")->constrained("villages")->onDelete("restrict");
-            $table->foreignId("user_id")->constrained("users")->onDelete("restrict");
+            $table->string("name");
+            $table->text("address");
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_villages');
+        Schema::dropIfExists('villages');
     }
 };

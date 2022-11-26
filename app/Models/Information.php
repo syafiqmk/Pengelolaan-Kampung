@@ -10,4 +10,8 @@ class Information extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function village() {
+        return $this->belongsTo(Village::class, 'village_id');
+    }
 }
