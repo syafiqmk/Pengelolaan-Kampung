@@ -5,6 +5,8 @@
         <div class="col-md-4 mt-5">
             <h4>Login</h4>
 
+            @include('template.components.alerts')
+
             <form action="" method="post">
                 @csrf
                 <div class="mb-3">
