@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 
 /*
@@ -17,6 +18,6 @@ use App\Http\Controllers\GeneralController;
 Route::get('/', [GeneralController::class, "welcome"]);
 
 // Auth Route
-Route::name("auth.")->group(function() {
-    Route::get("/login", [GeneralController::class, "login"])->name("login");
-});
+Route::name("auth.")->controller(AuthController::class)->group(function() {
+    Route::get("/login", "login")->name("login");
+})->middleware("guest");
