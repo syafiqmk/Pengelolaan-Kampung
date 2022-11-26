@@ -23,6 +23,30 @@ class AuthController extends Controller
         if(Auth::attempt($validate)) {
             $request->session()->regenerate();
             $role = Auth()->user()->role;
+
+            switch ($role) {
+                case 'Admin':
+                    # code...
+                    break;
+                
+                case 'Admin Kampung':
+                    break;
+
+                case 'Operator':
+                    break;
+
+                case 'User':
+                    break;
+            }
         }
+
+        return back()->with("danger", "Fail to Login check your Email & Password!");
+    }
+
+    // Regsitration
+    public function register() {
+        return view("auth.register", [
+            "title" => "Register"
+        ]);
     }
 }
