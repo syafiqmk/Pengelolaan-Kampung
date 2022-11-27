@@ -21,7 +21,7 @@ class IsAdmin
                 return redirect()->route("402");
             }
         } else {
-            return redirect()->route("login");
+            return redirect()->route("auth.login");
         }
         return $next($request);
     }

@@ -25,7 +25,7 @@ class IsUser
                 }
             }
         } else {
-            return redirect()->route("login");
+            return redirect()->route("auth.login");
         }
         return $next($request);
     }
