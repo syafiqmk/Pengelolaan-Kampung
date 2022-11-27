@@ -31,7 +31,7 @@ class AuthController extends Controller
 
             switch ($role) {
                 case 'Admin':
-                    # code...
+                    return redirect()->route('admin.index');
                     break;
 
                 case 'Admin Kampung':

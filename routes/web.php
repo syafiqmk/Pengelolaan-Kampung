@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
@@ -40,3 +41,9 @@ Route::name("auth.")->controller(AuthController::class)->group(function() {
         Route::post("/kampung-regis", "regisKampungProcess")->name('regisKampungProcess');
     });
 });
+
+
+// Admin Route
+Route::name("admin.")->group(function() {
+    Route::get('/admin', [AdminController::class, 'index'])->name('index');
+})->middleware('admin');
