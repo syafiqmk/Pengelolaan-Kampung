@@ -40,6 +40,8 @@ Route::name("auth.")->controller(AuthController::class)->group(function() {
         Route::get("/kampung-regis", "regisKampung")->name('regisKampung');
         Route::post("/kampung-regis", "regisKampungProcess")->name('regisKampungProcess');
     });
+
+    Route::post('/logout', 'logout')->name('logout');
 });
 
 

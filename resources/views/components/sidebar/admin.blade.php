@@ -5,7 +5,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+        <a href="{{ route('admin.index') }}" class="nav-link active" aria-current="page">
           <i class="fa-solid fa-house"></i>
           Home
         </a>
@@ -18,11 +18,18 @@
         <strong>{{ auth()->user()->name }}</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
+        {{-- <li><a class="dropdown-item" href="#">New project...</a></li>
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a></li>
+        <li><hr class="dropdown-divider"></li> --}}
+        <li>
+          <form action="{{ route('auth.logout') }}" method="post">
+            @csrf
+            <button type="submit" class="dropdown-item">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </button>
+          </form>
+        </li>
       </ul>
     </div>
   </div>
