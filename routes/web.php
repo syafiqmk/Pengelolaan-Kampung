@@ -29,9 +29,12 @@ Route::name("auth.")->controller(AuthController::class)->group(function() {
         Route::get("/register", "register")->name("register");
     
         // User Registration
-    
+        Route::get("/user-regis", "selectKampung")->name("userSelectKampung");
+        Route::get("/user-regis/{village}", "regisUser")->name("regisUser");
+        Route::post("/user-regis", "regisUserProcess")->name("regisUserProcess");
         // Operator Registration
-    
+        Route::get("/operator-regis", "regisOperator")->name("regisOperator");
+        Route::post("/operator-regis", "regisOperatorProcess")->name("regisOperatorProcess");
         // Kampung Registration
         Route::get("/kampung-regis", "regisKampung")->name('regisKampung');
         Route::post("/kampung-regis", "regisKampungProcess")->name('regisKampungProcess');

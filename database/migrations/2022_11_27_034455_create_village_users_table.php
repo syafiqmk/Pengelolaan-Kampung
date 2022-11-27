@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('village_operators', function (Blueprint $table) {
+        Schema::create('village_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("operator_id")->constrained("users");
             $table->foreignId("village_id")->constrained("villages");
+            $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('village_operators');
+        Schema::dropIfExists('village_users');
     }
 };

@@ -34,4 +34,12 @@ class Village extends Model
     public function village_opertor() {
         return $this->hasMany(VillageOperator::class);
     }
+
+    public function admin() {
+        return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function village_user() {
+        return $this->hasMany(VillageUser::class);
+    }
 }

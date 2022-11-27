@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Village;
+use App\Models\VillageUser;
 
 class AuthController extends Controller
 {
@@ -47,7 +48,7 @@ class AuthController extends Controller
         return back()->with("danger", "Fail to Login check your Email & Password!");
     }
 
-    // Regsitration
+    // Registration
     public function register()
     {
         return view("auth.register", [
@@ -73,23 +74,97 @@ class AuthController extends Controller
             'address' => 'required'
         ]);
 
-        $village = Village::create([
-            'name' => $validate['namaKampung'],
-            'address' => $validate['address']
-        ]);
-        
         $user = User::create([
             'name' => $validate['name'],
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
             'address' => $validate['address'],
             'role' => "Admin Kampung",
-            'status' => "Waiting",
-            'village_id' => $village->id
+            'status' => "Granted"
+        ]);
+        
+        $village = Village::create([
+            'name' => $validate['namaKampung'],
+            'address' => $validate['address'],
+            'status' => 'Waiting',
+            'admin_id' => $user->id
         ]);
 
         if($user AND $village) {
             return redirect()->route('auth.login')->with("success", "Account created. Please Login!");
+        }
+    }
+
+    // User Registration
+    public function selectKampung() {
+        return view('auth.user.kampung', [
+            'title' => 'Pilih Kampung',
+            'villages' => Village::where('status', '=', 'Waiting')->get()
+        ]);
+    }
+
+    public function regisUser(Village $village) {
+        return view("auth.user.user", [
+            'title' => "Register User",
+            'village' => $village
+        ]);
+    }
+
+    public function regisUserProcess(Request $request) {
+        $validate = $request->validate([
+            'name' => 'required|min:1|max:100',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'address' => 'required'
+        ]);
+
+        $user = User::create([
+            'name' => $validate['name'],
+            'email' => $validate['email'],
+            'password' => bcrypt($validate['password']),
+            'address' => $validate['address'],
+            'role' => 'User',
+            'status' => 'Waiting'
+        ]);
+
+        $villageUser = VillageUser::create([
+            'village_id' => $request['village_id'],
+            'user_id' => $user->id
+        ]);
+
+        if($user AND $villageUser) {
+            return redirect()->route('auth.login')->with("success", "Account created. Please login!");
+        }
+    }
+
+    // Operator Registration
+    public function regisOperator() {
+        return view("auth.regisOperator", [
+            'title' => "Register Operator"
+        ]);
+    }
+
+    public function regisOperatorProcess(Request $request) {
+        $validate = $request->validate([
+            'name' => 'required|min:1|max:100',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'address' => 'required',
+            'type' => 'required'
+        ]);
+
+        $user = User::create([
+            'name' => $validate['name'],
+            'email' => $validate['email'],
+            'password' => bcrypt($validate['password']),
+            'address' => $validate['address'],
+            'role' => 'Operator',
+            'status' => 'Waiting',
+            'type' => $validate['type']
+        ]);
+
+        if($user) {
+            return redirect()->route("auth.login")->with("success", "Account created. Please login!");
         }
     }
 }

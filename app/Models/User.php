@@ -25,8 +25,8 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
-    public function village() {
-        return $this->hasOne(Village::class, 'village_id');
+    public function villageAdmin() {
+        return $this->belongsTo(Village::class);
     }
 
     public function complaint() {
@@ -39,6 +39,10 @@ class User extends Authenticatable
 
     public function emergency_response() {
         return $this->hasMany(EmergencyResponse::class);
+    }
+
+    public function village_user() {
+        return $this->hasOne(VillageUser::class);
     }
 
     /**

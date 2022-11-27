@@ -7,7 +7,7 @@
             <p>Login sebagai user jika anda masyarakat kampung. Dapat kan berbagai pengumuman dan informasi dari kampung dan dapatkan layanan dari kampung.</p>
         </div>
         <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <a href="" class="btn btn-primary">Daftar</a>
+            <a href="{{ route('auth.userSelectKampung') }}" class="btn btn-primary">Daftar</a>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
             <p>Daftar sebagai operator untuk menanggapi laporan darurat yang diberikan masyarakat.</p>
         </div>
         <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <a href="" class="btn btn-primary">Daftar</a>
+            <a href="{{ route('auth.regisOperator') }}" class="btn btn-primary">Daftar</a>
         </div>
     </div>
 

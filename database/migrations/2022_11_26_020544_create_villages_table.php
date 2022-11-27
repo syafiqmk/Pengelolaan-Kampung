@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->text("address");
+            $table->enum("status", ['Waiting', 'Granted']);
+            $table->foreignId("admin_id")->constrained('users');
             $table->timestamps();
         });
     }
