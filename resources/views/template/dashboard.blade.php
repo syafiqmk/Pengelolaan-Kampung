@@ -24,7 +24,11 @@
     <div class="container-fluid px-0">
         <div class="row mx-0">
             <div class="col-md-3 px-0">
-                @include('components.sidebar.admin')
+                @if (Request::is('admin*'))
+                    @include('components.sidebar.admin')
+                @elseif(Request::is('operator*'))
+                    @include('components.sidebar.operator')
+                @endif
             </div>
             <div class="col-md-9 px-4 py-3">
                 @yield('title')
