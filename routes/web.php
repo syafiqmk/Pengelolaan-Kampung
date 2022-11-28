@@ -61,4 +61,12 @@ Route::name("admin.")->group(function() {
 
     Route::get('/admin/kampung/{village}', [AdminController::class, 'detailKampung'])->name('detailKampung');
     Route::get('/admin/kampung/{village}/grant', [AdminController::class, 'grantKampung'])->name('grantKampung');
-})->middleware('admin');
+
+    // Operator
+    Route::get('/admin/operator', [AdminController::class, 'operator'])->name('operator');
+    Route::get('/admin/operator-waiting', [AdminController::class, 'operatorWaiting'])->name('operatorWaiting');
+    Route::get('/admin/operator-granted', [AdminController::class, 'operatorGranted'])->name('operatorGranted');
+
+    Route::get('/admin/operator/{operator}', [AdminController::class, 'operatorDetail'])->name('operatorDetail');
+    Route::get('/admin/operator/{operator}/grant', [AdminController::class, 'operatorGrant'])->name('operatorGrant');
+})->middleware('IsAdmin');

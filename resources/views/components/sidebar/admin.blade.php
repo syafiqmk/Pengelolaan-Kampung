@@ -24,6 +24,13 @@
           Kampung
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('admin.operator') }}" class="nav-link {{ Request::is('admin/operator*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-truck-medical"></i>
+          Operator
+        </a>
+      </li>
     </ul>
     <hr>
     <div class="dropdown">
