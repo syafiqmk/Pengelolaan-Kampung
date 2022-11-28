@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,8 @@ Route::name("auth.")->controller(AuthController::class)->group(function() {
 // Admin Route
 Route::name("admin.")->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('index');
+    
+    // Complaint Category
+    Route::resource('/admin/category', AdminCategoryController::class);
+    Route::get('/admin/get-category', [AdminController::class, 'category'])->name('get-category');
 })->middleware('admin');

@@ -5,12 +5,18 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="{{ route('admin.index') }}" class="nav-link active" aria-current="page">
+        <a href="{{ route('admin.index') }}" class="nav-link {{ Request::is('admin') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-house"></i>
           Home
         </a>
       </li>
       
+      <li class="nav-item">
+        <a href="{{ route('admin.category.index') }}" class="nav-link {{ Request::is('admin/category') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-list-ul"></i>
+          Kategori Pengaduan
+        </a>
+      </li>
     </ul>
     <hr>
     <div class="dropdown">
