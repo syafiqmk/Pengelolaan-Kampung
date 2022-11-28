@@ -15,7 +15,7 @@
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/c8ae339e7b.js" crossorigin="anonymous"></script>
     {{-- sweetalert2 --}}
-    <script src="https://kit.fontawesome.com/c8ae339e7b.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
