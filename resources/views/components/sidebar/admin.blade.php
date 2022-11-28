@@ -17,6 +17,13 @@
           Kategori Pengaduan
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('admin.kampung') }}" class="nav-link {{ Request::is('admin/kampung*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-people-roof"></i>
+          Kampung
+        </a>
+      </li>
     </ul>
     <hr>
     <div class="dropdown">

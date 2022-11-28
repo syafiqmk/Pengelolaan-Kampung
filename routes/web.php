@@ -53,4 +53,12 @@ Route::name("admin.")->group(function() {
     // Complaint Category
     Route::resource('/admin/category', AdminCategoryController::class);
     Route::get('/admin/get-category', [AdminController::class, 'category'])->name('get-category');
+
+    // Kampung
+    Route::get('/admin/kampung', [AdminController::class, 'kampung'])->name('kampung');
+    Route::get('/admin/kampung-waiting', [AdminController::class, 'kampungWaiting'])->name('kampungWaiting');
+    Route::get('/admin/kampung-granted', [AdminController::class, 'kampungGranted'])->name('kampungGranted');
+
+    Route::get('/admin/kampung/{village}', [AdminController::class, 'detailKampung'])->name('detailKampung');
+    Route::get('/admin/kampung/{village}/grant', [AdminController::class, 'grantKampung'])->name('grantKampung');
 })->middleware('admin');
