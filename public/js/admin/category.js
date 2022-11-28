@@ -19,8 +19,8 @@ function getData() {
                             <td>${category.category}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="javascript:void(0)" class="btn btn-primary" onClick="update(${category.id})">Update</a>
-                                    <a href="javascript:void(0)" class="btn btn-danger" onClick="hapus(${category.id})">Delete</a>
+                                    <a href="javascript:void(0)" class="btn btn-primary" onClick="update(${category.id})"><i class="fa-regular fa-pen-to-square"></i> Update</a>
+                                    <a href="javascript:void(0)" class="btn btn-danger" onClick="hapus(${category.id})"><i class="fa-solid fa-trash"></i> Delete</a>
                                 </div>
                             </td>
                         </tr>

@@ -18,23 +18,6 @@
             <th>Action</th>
         </thead>
         <tbody id="table-body">
-            {{-- @if ($categories->count() == 0)
-                <tr>
-                    <td colspan="2" class="text-center">No entries found.</td>
-                </tr>
-            @else
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $category->category }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="javascript:void(0)" class="btn btn-primary">Update</a>
-                                <a href="javascript:void(0)" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            @endif --}}
         </tbody>
     </table>
 
