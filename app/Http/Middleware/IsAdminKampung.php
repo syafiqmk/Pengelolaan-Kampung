@@ -18,11 +18,10 @@ class IsAdminKampung
     public function handle(Request $request, Closure $next)
     {
         if(auth()->check()) {
-            if(auth()->user()->role !== "AdminKampung") {
+            if(auth()->user()->role !== "Admin Kampung") {
                 return redirect()->route("403");
             } else {
-                $adminId = auth()->user()->id;
-                $village = Village::where('admin_id', '=', $adminId)->get();
+                $village = Village::where('admin_id', '=', auth()->user()->id)->firstOrFail();
                 
                 if($village->status === "Waiting") {
                     return redirect()->route("accountWait");

@@ -20,11 +20,12 @@
 <body>
 
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-7">
-                <h2>Account status Waiting!</h2>
-                <a href="/" class="btn btn-primary">Home</a>
-            </div>
+        <div class="d-block text-center">
+            <h2>Account status Waiting!</h2>
+            <form action="{{ route('auth.logout') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-danger my-3">Logout</button>
+            </form>
         </div>
     </div>
 

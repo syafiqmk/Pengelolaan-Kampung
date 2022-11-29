@@ -28,6 +28,8 @@
                     @include('components.sidebar.admin')
                 @elseif(Request::is('operator*'))
                     @include('components.sidebar.operator')
+                @elseif(Request::is('kampung*'))
+                    @include('components.sidebar.adminKampung')
                 @endif
             </div>
             <div class="col-md-9 px-4 py-3">

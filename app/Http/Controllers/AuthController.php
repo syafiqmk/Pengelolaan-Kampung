@@ -35,6 +35,7 @@ class AuthController extends Controller
                     break;
 
                 case 'Admin Kampung':
+                    return redirect()->route('kampung.index');
                     break;
 
                 case 'Operator':

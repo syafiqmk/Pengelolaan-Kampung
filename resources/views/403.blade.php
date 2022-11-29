@@ -20,11 +20,9 @@
 <body>
 
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-7">
-                <h2>403 | Foribidden</h2>
-                <a href="/" class="btn btn-primary">Home</a>
-            </div>
+        <div class="d-block text-center">
+            <h2>403 | Forbidden</h2>
+            <a href="/" class="btn btn-primary my-3">Home</a>
         </div>
     </div>
 

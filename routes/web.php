@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\kampung\AdminKampungController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,5 +76,5 @@ Route::middleware('IsAdmin')->name("admin.")->group(function() {
 
 // Admin Kampung route
 Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
-    
+    Route::get('/kampung', [AdminKampungController::class, 'index'])->name('index');
 });
