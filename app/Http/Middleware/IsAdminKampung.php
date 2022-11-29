@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\Village;
 use Illuminate\Http\Request;
 
 class IsAdminKampung
@@ -20,7 +21,10 @@ class IsAdminKampung
             if(auth()->user()->role !== "AdminKampung") {
                 return redirect()->route("403");
             } else {
-                if(auth()->user()->status === "Waiting") {
+                $adminId = auth()->user()->id;
+                $village = Village::where('admin_id', '=', $adminId)->get();
+                
+                if($village->status === "Waiting") {
                     return redirect()->route("accountWait");
                 }
             }

@@ -18,4 +18,10 @@ class GeneralController extends Controller
         ]);
     }
 
+    public function waiting() {
+        return view('waiting', [
+            'title' => "Account status Waiting!"
+        ]);
+    }
+
 }

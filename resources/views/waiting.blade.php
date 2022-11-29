@@ -22,7 +22,7 @@
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7">
-                <h2>403 | Foribidden</h2>
+                <h2>Account status Waiting!</h2>
                 <a href="/" class="btn btn-primary">Home</a>
             </div>
         </div>
