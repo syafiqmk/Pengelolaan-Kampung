@@ -17,6 +17,13 @@
           Pengumuman
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('kampung.information.index') }}" class="nav-link {{ Request::is('kampung/information*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-circle-info"></i>
+          Informasi
+        </a>
+      </li>
       
     </ul>
     <hr>

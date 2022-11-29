@@ -6,6 +6,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\kampung\PengumumanController;
 use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\kampung\InformationController;
 use App\Http\Controllers\kampung\AdminKampungController;
 
 /*
@@ -80,4 +81,5 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
     Route::get('/kampung', [AdminKampungController::class, 'index'])->name('index');
 
     Route::resource('/kampung/pengumuman', PengumumanController::class);
+    Route::resource('/kampung/information', InformationController::class);
 });

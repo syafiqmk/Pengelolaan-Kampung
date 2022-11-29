@@ -1,13 +1,13 @@
 @extends('template.dashboard')
 
 @section('title')
-    <h3>Pengumuman</h3>
+    <h3>Informasi</h3>
 @endsection
 
 @section('content')
     <div class="mb-3">
-        <span class="fs-5">Data Pengumuman</span>
-        <a href="{{ route('kampung.pengumuman.create') }}" class="btn btn-primary float-end"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <span class="fs-5">Data Informasi</span>
+        <a href="{{ route('kampung.information.create') }}" class="btn btn-primary float-end"><i class="fa-solid fa-plus"></i> Tambah</a>
     </div>
     @include('components.alerts')
 
@@ -24,16 +24,16 @@
                     <td colspan="4" class="text-center">No entries found.</td>
                 </tr>
             @else
-                @foreach ($announcements as $announcement)
+                @foreach ($informations as $information)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $announcement->title }}</td>
-                        <td>{{ date('l, d/m/Y', strtotime($announcement->created_at)) }}</td>
-                        <td><a href="{{ route('kampung.pengumuman.show', $announcement->id) }}" class="btn btn-primary"><i class="fa-solid fa-book"></i> Detail</a></td>
+                        <td>{{ $information->title }}</td>
+                        <td>{{ date('l, d/m/Y', strtotime($information->created_at)) }}</td>
+                        <td><a href="{{ route('kampung.information.show', $information->id) }}" class="btn btn-primary"><i class="fa-solid fa-book"></i> Detail</a></td>
                     </tr>
                 @endforeach
             @endif
         </tbody>
     </table>
-    {{ $announcements->links() }}
+    {{ $informations->links() }}
 @endsection

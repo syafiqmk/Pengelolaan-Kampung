@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\kampung;
 
 use App\Models\Village;
-use App\Models\Announcement;
+use App\Models\Information;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PengumumanController extends Controller
+class InformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class PengumumanController extends Controller
     public function index()
     {   
         $village = Village::where('admin_id', '=', auth()->user()->id)->firstOrFail();
-        return view('kampung.pengumuman.index', [
-            'title' => 'Pengumuman',
-            'announcements' => Announcement::where('village_id', '=', $village->id)->paginate(10),
-            'count' => Announcement::where('village_id', '=', $village->id)->count()
+        return view('kampung.information.index', [
+            'title' => 'Informasi',
+            'informations' => Information::where('village_id', '=', $village->id)->paginate(10),
+            'count' => Information::where('village_id', '=', $village->id)->count()
         ]);
     }
 
@@ -31,8 +31,8 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('kampung.pengumuman.create', [
-            'title' => 'Tambah Pengumuman'
+        return view('kampung.information.create', [
+            'title' => 'Tambah Informasi',
         ]);
     }
 
@@ -44,23 +44,21 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $village = Village::where('admin_id', '=', auth()->user()->id)->firstOrFail();
-
         $validate = $request->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        $create = Announcement::create([
+        $create = Information::create([
             'title' => ucwords($validate['title']),
             'description' => $validate['description'],
-            'village_id' => $village->id
+            'village_id' => Village::where('admin_id', '=', auth()->user()->id)->firstOrFail()->id
         ]);
 
         if($create) {
-            return redirect()->route('kampung.pengumuman.index')->with('success', 'Pengumuman berhasil dibuat!');
+            return redirect()->route('kampung.information.index')->with('success', 'Informasi berhasil ditambah!');
         } else {
-            return redirect()->route('kampung.pengumuman.index')->with('danger', 'Pengumuman gagal dibuat!');
+            return redirect()->route('kampung.information.index')->with('danger', 'Informasi gagal ditambah!');
         }
     }
 
@@ -70,11 +68,11 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Announcement $pengumuman)
+    public function show(Information $information)
     {
-        return view('kampung.pengumuman.detail', [
-            'title' => $pengumuman->title,
-            'announcement' => $pengumuman
+        return view('kampung.information.detail', [
+            'title' => $information->title,
+            'information' => $information
         ]);
     }
 
@@ -84,11 +82,11 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Announcement $pengumuman)
+    public function edit(Information $information)
     {
-        return view('kampung.pengumuman.edit', [
-            'title' => 'Edit : ' . $pengumuman->title,
-            'announcement' => $pengumuman
+        return view('kampung.information.edit', [
+            'title' => 'Edit ' . $information->title,
+            'information' => $information
         ]);
     }
 
@@ -99,22 +97,22 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Announcement $pengumuman)
+    public function update(Request $request, Information $information)
     {
         $validate = $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'required'
         ]);
 
-        $update = $pengumuman->update([
+        $update = $information->update([
             'title' => ucwords($validate['title']),
             'description' => $validate['description']
         ]);
 
         if($update) {
-            return redirect()->route('kampung.pengumuman.show', $pengumuman->id)->with('success', 'Pengumuman berhasil diubah!');
+            return redirect()->route('kampung.information.show', $information->id)->with('success', 'Informasi berhasil diubah!');
         } else {
-            return redirect()->back()->with('danger', 'Pengumuman gagal diubah!');
+            return redirect()->back()->with('danger', 'Informasi gagal diubah!');
         }
     }
 
@@ -124,14 +122,14 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $pengumuman)
+    public function destroy(Information $information)
     {
-        $delete = $pengumuman->delete();
+        $delete = $information->delete();
 
         if($delete) {
-            return redirect()->route('kampung.pengumuman.index')->with('success', 'Pengumuman berhasil dihapus!');
+            return redirect()->route('kampung.information.index')->with('success', 'Informasi berhasil dihapus!');
         } else {
-            return redirect()->back()->with('danger', 'Pengumuman gagal dihapus!');
+            return redirect()->back()->with('danger', 'Informasi gagal dihapus!');
         }
     }
 }
