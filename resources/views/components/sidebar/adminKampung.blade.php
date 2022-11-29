@@ -5,9 +5,16 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="{{ route('kampung.index') }}" class="nav-link active" aria-current="page">
+        <a href="{{ route('kampung.index') }}" class="nav-link {{ Request::is('kampung') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-house"></i>
           Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="{{ route('kampung.pengumuman.index') }}" class="nav-link {{ Request::is('kampung/pengumuman*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-bullhorn"></i>
+          Pengumuman
         </a>
       </li>
       

@@ -18,6 +18,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- sidebars --}}
     <link rel="stylesheet" href="/style/sidebars.css">
+    {{-- tinymce --}}
+    <script src="https://cdn.tiny.cloud/1/36rw5ypvwnxo4vmew1ajhrf3zl3j8wlomjwgkk6smign4cx2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 
