@@ -18,7 +18,7 @@ class IsAdminKampung
     {
         if(auth()->check()) {
             if(auth()->user()->role !== "AdminKampung") {
-                return redirect()->route("402");
+                return redirect()->route("403");
             } else {
                 if(auth()->user()->status === "Waiting") {
                     return redirect()->route("accountWait");

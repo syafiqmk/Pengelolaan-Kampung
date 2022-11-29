@@ -12,4 +12,10 @@ class GeneralController extends Controller
         ]);
     }
 
+    public function forbidden() {
+        return view('403', [
+            'title' => "403 | Forbidden"
+        ]);
+    }
+
 }

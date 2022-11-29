@@ -18,7 +18,7 @@ class IsAdmin
     {
         if(auth()->check()) {
             if(auth()->user()->role !== "Admin") {
-                return redirect()->route("402");
+                return redirect()->route("403");
             }
         } else {
             return redirect()->route("auth.login");

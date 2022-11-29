@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\AdminCategoryController;
 */
 
 Route::get('/', [GeneralController::class, "welcome"]);
+Route::get('/403', [GeneralController::class, 'forbidden'])->name('403');
 
 // Auth Route
 Route::name("auth.")->controller(AuthController::class)->group(function() {
@@ -47,7 +48,7 @@ Route::name("auth.")->controller(AuthController::class)->group(function() {
 
 
 // Admin Route
-Route::name("admin.")->group(function() {
+Route::middleware('IsAdmin')->name("admin.")->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('index');
     
     // Complaint Category
@@ -69,4 +70,4 @@ Route::name("admin.")->group(function() {
 
     Route::get('/admin/operator/{operator}', [AdminController::class, 'operatorDetail'])->name('operatorDetail');
     Route::get('/admin/operator/{operator}/grant', [AdminController::class, 'operatorGrant'])->name('operatorGrant');
-})->middleware('IsAdmin');
+});
