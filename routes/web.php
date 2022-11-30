@@ -8,6 +8,7 @@ use App\Http\Controllers\kampung\PengumumanController;
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\kampung\InformationController;
 use App\Http\Controllers\kampung\AdminKampungController;
+use App\Http\Controllers\kampung\KampungMasyarakatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,4 +83,12 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
 
     Route::resource('/kampung/pengumuman', PengumumanController::class);
     Route::resource('/kampung/information', InformationController::class);
+
+    Route::controller(KampungMasyarakatController::class)->name('masyarakat.')->group(function() {
+        Route::get('/kampung/masyarakat', 'index')->name('index');
+        Route::get('/kampung/masyarakat-waiting', 'waiting')->name('waiting');
+        Route::get('/kampung/masyarakat-granted', 'granted')->name('granted');
+        Route::get('/kampung/masyarakat/{masyarakat}', 'detail')->name('detail');
+        Route::get('/kampung/masyarakat/{masyarakat}/grant', 'grant')->name('grant');
+    });
 });

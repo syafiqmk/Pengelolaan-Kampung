@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\kampung;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Village;
+use App\Models\VillageUser;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminKampungController extends Controller
 {

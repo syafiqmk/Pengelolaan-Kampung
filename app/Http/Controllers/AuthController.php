@@ -100,7 +100,7 @@ class AuthController extends Controller
     public function selectKampung() {
         return view('auth.user.kampung', [
             'title' => 'Pilih Kampung',
-            'villages' => Village::where('status', '=', 'Waiting')->get()
+            'villages' => Village::where('status', '=', 'Granted')->get()
         ]);
     }
 

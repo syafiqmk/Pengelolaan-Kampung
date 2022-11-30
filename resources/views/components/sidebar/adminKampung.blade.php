@@ -24,6 +24,13 @@
           Informasi
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('kampung.masyarakat.index') }}" class="nav-link {{ Request::is('kampung/masyarakat*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-people-group"></i>
+          Masyarakat
+        </a>
+      </li>
       
     </ul>
     <hr>

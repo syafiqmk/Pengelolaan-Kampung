@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <h4>Register User</h4>
-            <form action="" method="post">
+            <form action="{{ route('auth.regisUserProcess') }}" method="post">
                 @csrf
                 <input type="hidden" name="village_id" value="{{ $village->id }}">
 
