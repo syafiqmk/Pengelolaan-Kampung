@@ -73,11 +73,13 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'namaKampung' => 'required|min:5',
-            'address' => 'required'
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required'
         ]);
 
         $user = User::create([
-            'name' => $validate['name'],
+            'name' => ucwords($validate['name']),
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
             'address' => $validate['address'],
@@ -86,7 +88,9 @@ class AuthController extends Controller
         ]);
         
         $village = Village::create([
-            'name' => $validate['namaKampung'],
+            'name' => ucwords($validate['namaKampung']),
+            'latitude' => $validate['latitude'],
+            'longitude' => $validate['longitude'],
             'address' => $validate['address'],
             'status' => 'Waiting',
             'admin_id' => $user->id
@@ -121,7 +125,7 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $validate['name'],
+            'name' => ucwords($validate['name']),
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
             'address' => $validate['address'],
@@ -156,7 +160,7 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $validate['name'],
+            'name' => ucwords($validate['name']),
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
             'address' => $validate['address'],

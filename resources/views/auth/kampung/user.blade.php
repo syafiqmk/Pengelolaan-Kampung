@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="row d-flex justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-7">
             <h4>Daftar Kampung</h4>
 
             <form action="{{ route('auth.regisKampungProcess') }}" method="post">
@@ -47,6 +47,15 @@
                     @enderror
                 </div>
 
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+
+                <div class="mb-3">
+                    <label for="">Letak</label>
+                    <div id="leaflet-map"></div>
+                    <a href="javascript:void(0)" class="btn btn-primary mt-1" id="lokasi-anda">Lokasi Anda</a>
+                </div>
+
                 <div class="mb-3">
                     <label for="">Alamat</label>
                     <textarea name="address" id="" cols="30" rows="5" class="form-control @error('address') is-invalid @enderror" placeholder="Alamat">{{ @old('address') }}</textarea>
@@ -64,4 +73,6 @@
             </form>
         </div>
     </div>
+
+    <script src="/js/map.js"></script>
 @endsection

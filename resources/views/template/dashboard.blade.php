@@ -20,6 +20,14 @@
     <link rel="stylesheet" href="/style/sidebars.css">
     {{-- tinymce --}}
     <script src="https://cdn.tiny.cloud/1/36rw5ypvwnxo4vmew1ajhrf3zl3j8wlomjwgkk6smign4cx2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- leaflet js --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <style>
+        #leaflet-map {
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
 

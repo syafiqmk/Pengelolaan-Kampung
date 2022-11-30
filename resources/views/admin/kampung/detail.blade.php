@@ -8,6 +8,10 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-7">
             @include('components.alerts')
+
+            <input type="hidden" id="latitude" value="{{ $village->latitude }}">
+            <input type="hidden" id="longitude" value="{{ $village->longitude }}">
+            <div id="leaflet-map"></div>
             <table class="table">
                 <tr>
                     <td>Nama Kampung</td>
@@ -46,4 +50,6 @@
             @endif
         </div>
     </div>
+
+    <script src="/js/map-still.js"></script>
 @endsection

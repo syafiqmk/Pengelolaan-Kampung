@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
             $table->text("description");
-            $table->text("location");
+            $table->text('latitude')->nullable();
+            $table->text('longitude')->nullable();
             $table->foreignId("category_id")->constrained("complaint_categories");
             $table->foreignId("user_id")->constrained("users");
             $table->foreignId("village_id")->constrained("villages");

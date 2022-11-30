@@ -24,7 +24,7 @@ use App\Http\Controllers\kampung\KampungMasyarakatController;
 
 Route::get('/', [GeneralController::class, "welcome"]);
 Route::get('/403', [GeneralController::class, 'forbidden'])->name('403');
-Route::get('/waiting', [GeneralController::class, 'waiting'])->name('accountWaiting');
+Route::get('/waiting', [GeneralController::class, 'waiting'])->name('accountWait');
 
 // Auth Route
 Route::name("auth.")->controller(AuthController::class)->group(function() {

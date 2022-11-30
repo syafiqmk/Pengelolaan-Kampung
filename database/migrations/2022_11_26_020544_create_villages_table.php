@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('villages', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->text("address");
+            $table->text('latitude')->nullable();
+            $table->text('longitude')->nullable();
+            $table->text('address');
             $table->enum("status", ['Waiting', 'Granted']);
             $table->foreignId("admin_id")->constrained('users');
             $table->timestamps();
