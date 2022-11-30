@@ -19,7 +19,7 @@ class PengumumanController extends Controller
         $village = Village::where('admin_id', '=', auth()->user()->id)->firstOrFail();
         return view('kampung.pengumuman.index', [
             'title' => 'Pengumuman',
-            'announcements' => Announcement::where('village_id', '=', $village->id)->paginate(10),
+            'announcements' => Announcement::where('village_id', '=', $village->id)->orderBy('id', 'desc')->paginate(10),
             'count' => Announcement::where('village_id', '=', $village->id)->count()
         ]);
     }

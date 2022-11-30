@@ -42,6 +42,7 @@ class AuthController extends Controller
                     break;
 
                 case 'User':
+                    return redirect()->route('masyarakat.index');
                     break;
             }
         }

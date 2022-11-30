@@ -19,7 +19,7 @@ class InformationController extends Controller
         $village = Village::where('admin_id', '=', auth()->user()->id)->firstOrFail();
         return view('kampung.information.index', [
             'title' => 'Informasi',
-            'informations' => Information::where('village_id', '=', $village->id)->paginate(10),
+            'informations' => Information::where('village_id', '=', $village->id)->orderBy('id', 'DESC')->paginate(10),
             'count' => Information::where('village_id', '=', $village->id)->count()
         ]);
     }

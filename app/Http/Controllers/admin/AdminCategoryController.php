@@ -18,7 +18,7 @@ class AdminCategoryController extends Controller
     {
         return view('admin.category', [
             'title' => 'Kategori Pengaduan',
-            'categories' => ComplaintCategory::paginate(10)
+            'categories' => ComplaintCategory::orderBy('id', 'desc')->paginate(10)
         ]);
     }
 
