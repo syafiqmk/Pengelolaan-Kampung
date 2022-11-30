@@ -29,4 +29,5 @@
             @endif
         </tbody>
     </table>
+    <a href="{{ route('auth.register') }}" class="btn btn-danger">Cancel</a>
 @endsection

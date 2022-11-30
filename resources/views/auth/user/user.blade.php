@@ -13,6 +13,10 @@
                     <input type="text" name="NamaKampung" id="" class="form-control" disabled value="{{ $village->name }}">
                 </div>
 
+                <input type="hidden" name="" id="latitude" value="{{ $village->latitude }}">
+                <input type="hidden" name="" id="longitude" value="{{ $village->longitude }}">
+                <div id="leaflet-map"></div>
+
                 <div class="mb-3">
                     <label for="">Nama</label>
                     <input type="text" name="name" id="" class="form-control @error('name') is-invalid @enderror" placeholder="Nama" autocomplete="off" value="{{ @old('name') }}">
@@ -62,4 +66,6 @@
             </form>
         </div>
     </div>
+
+    <script src="/js/map-still.js"></script>
 @endsection
