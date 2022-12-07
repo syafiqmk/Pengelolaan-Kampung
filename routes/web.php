@@ -123,4 +123,10 @@ Route::middleware('IsUser')->controller(MasyarakatController::class)->name('masy
         Route::post('/masyarakat/pengaduan/baru', 'buatPengaduanProcess')->name('store');
         Route::get('/masyarakat/pengaduan/{complaint}', 'pengaduanDetail')->name('detail');
     });
+
+    // Kegiatan
+    Route::name('activity.')->group(function() {
+        Route::get('/masyarakat/activity', 'kegiatan')->name('index');
+        Route::get('/masyarakat/activity/{activity}', 'kegiatanDetail')->name('detail');
+    });
 });

@@ -26,6 +26,13 @@
       </li>
       
       <li class="nav-item">
+        <a href="{{ route('masyarakat.activity.index') }}" class="nav-link {{ Request::is('masyarakat/activity*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-clipboard-list"></i>
+          Kegiatan
+        </a>
+      </li>
+      
+      <li class="nav-item">
         <a href="{{ route('masyarakat.pengaduan.index') }}" class="nav-link {{ Request::is('masyarakat/pengaduan*') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-feather-pointed"></i>
           Pengaduan Masyarakat

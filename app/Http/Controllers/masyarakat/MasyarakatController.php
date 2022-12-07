@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\masyarakat;
 
+use App\Models\Activity;
 use App\Models\Complaint;
 use App\Models\Information;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\ComplaintCategory;
+use App\Http\Controllers\Controller;
 
 class MasyarakatController extends Controller
 {
@@ -99,6 +100,26 @@ class MasyarakatController extends Controller
         return view('masyarakat.pengaduan.detail', [
             'title' => 'Detail Pengaduan',
             'complaint' => $complaint
+        ]);
+    }
+
+
+    // Kegiatan
+    public function kegiatan() {
+
+        $activities = Activity::where('village_id', '=', auth()->user()->village_user->village_id)->where('date', '>=', date('Y-m-d'));
+
+        return view('masyarakat.activity.index', [
+            'title' => 'Kegiatan',
+            'activities' => $activities->paginate(10),
+            'count' => $activities->count()
+        ]);
+    }
+
+    public function kegiatanDetail(Activity $activity) {
+        return view('masyarakat.activity.detail', [
+            'title' => $activity->title,
+            'activity' => $activity
         ]);
     }
 }
