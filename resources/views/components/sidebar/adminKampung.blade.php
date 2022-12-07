@@ -38,6 +38,13 @@
           Masyarakat
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('kampung.pengaduan.index') }}" class="nav-link {{ Request::is('kampung/pengaduan*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-feather-pointed"></i>
+          Pengaduan
+        </a>
+      </li>
       
     </ul>
     <hr>

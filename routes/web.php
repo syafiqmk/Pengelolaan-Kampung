@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\kampung\InformationController;
 use App\Http\Controllers\kampung\AdminKampungController;
 use App\Http\Controllers\masyarakat\MasyarakatController;
+use App\Http\Controllers\kampung\KampungPengaduanController;
 use App\Http\Controllers\kampung\KampungMasyarakatController;
 
 /*
@@ -93,6 +94,12 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
         Route::get('/kampung/masyarakat-granted', 'granted')->name('granted');
         Route::get('/kampung/masyarakat/{masyarakat}', 'detail')->name('detail');
         Route::get('/kampung/masyarakat/{masyarakat}/grant', 'grant')->name('grant');
+    });
+
+    Route::controller(KampungPengaduanController::class)->name('pengaduan.')->group(function() {
+        Route::get('/kampung/pengaduan', 'index')->name('index');
+        Route::get('/kampung/pengaduan/{category}', 'category')->name('category');
+        Route::get('/kampung/pengaduan/detail/{complaint}', 'detail')->name('detail');
     });
 });
 
