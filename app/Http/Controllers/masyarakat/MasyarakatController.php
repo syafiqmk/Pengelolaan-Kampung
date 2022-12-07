@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\masyarakat;
 
+use App\Models\Complaint;
 use App\Models\Information;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ComplaintCategory;
 
 class MasyarakatController extends Controller
 {
@@ -48,6 +50,55 @@ class MasyarakatController extends Controller
         return view('masyarakat.informasi.detail', [
             'title' => $information->title,
             'information' => $information
+        ]);
+    }
+
+    // Pengaduan
+    public function pengaduan() {
+        $complaints = Complaint::where('user_id', '=', auth()->user()->id)->orderBy('id', 'DESC');
+
+        return view('masyarakat.pengaduan.index', [
+            'title' => 'Pengaduan Masyarakat',
+            'complaints' => $complaints->paginate(10),
+            'count' => $complaints->count()
+        ]);
+    }
+
+    public function buatPengaduan() {
+        return view('masyarakat.pengaduan.create', [
+            'title' => 'Buat aduan baru',
+            'categories' => ComplaintCategory::all(),
+        ]);
+    }
+
+    public function buatPengaduanProcess(Request $request) {
+        $validate = $request->validate([
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
+
+        $create = Complaint::create([
+            'description' => $validate['description'],
+            'latitude' => $validate['latitude'],
+            'longitude' => $validate['longitude'],
+            'category_id' => $validate['category'],
+            'user_id' => auth()->user()->id,
+            'village_id' => auth()->user()->village_user->village_id
+        ]);
+
+        if($create) {
+            return redirect()->route('masyarakat.pengaduan.index')->with('success', 'Aduan berhasil dibuat!');
+        } else {
+            return redirect()->route('masyarakat.pengaduan.index')->with('danger', 'Aduan gagal dibuat!');
+        }
+    }
+
+    public function pengaduanDetail(Complaint $complaint) {
+        return view('masyarakat.pengaduan.detail', [
+            'title' => 'Detail Pengaduan',
+            'complaint' => $complaint
         ]);
     }
 }

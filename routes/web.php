@@ -106,4 +106,12 @@ Route::middleware('IsUser')->controller(MasyarakatController::class)->name('masy
     // Informasi
     Route::get('/masyarakat/informasi', 'information')->name('information');
     Route::get('/masyarakat/informasi/{information}', 'detailInformation')->name('informationDetail');
+
+    // Pengaduan
+    Route::name('pengaduan.')->group(function() {
+        Route::get('/masyarakat/pengaduan', 'pengaduan')->name('index');
+        Route::get('/masyarakat/pengaduan/baru', 'buatPengaduan')->name('create');
+        Route::post('/masyarakat/pengaduan/baru', 'buatPengaduanProcess')->name('store');
+        Route::get('/masyarakat/pengaduan/{complaint}', 'pengaduanDetail')->name('detail');
+    });
 });
