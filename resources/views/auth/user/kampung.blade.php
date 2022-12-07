@@ -3,6 +3,15 @@
 @section('body')
     <h2 class="text-center">Pilih Kampung</h2>
 
+    <div class="my-3">
+        <form action="{{ route('auth.userSelectKampung') }}" method="get">
+            <div class="input-group">
+                <input type="text" name="search" id="" class="form-control" placeholder="Search..." autocomplete="off">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            </div>
+        </form>
+    </div>
+
     <table class="table">
         <thead>
             <th>#</th>
@@ -29,5 +38,8 @@
             @endif
         </tbody>
     </table>
+
+    {{ $villages->links() }}
+
     <a href="{{ route('auth.register') }}" class="btn btn-danger">Cancel</a>
 @endsection

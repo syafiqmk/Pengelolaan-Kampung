@@ -102,10 +102,17 @@ class AuthController extends Controller
     }
 
     // User Registration
-    public function selectKampung() {
+    public function selectKampung(Request $request) {
+
+        if($request->has('search')) {
+            $village = Village::where('status', '=', 'Granted')->where('name', 'LIKE', '%'.$request['search'].'%')->orWhere('address', 'LIKE', '%'.$request['search'].'%')->paginate(10);
+        } else {
+            $village = Village::where('status', '=', 'Granted')->paginate(10);
+        }
+
         return view('auth.user.kampung', [
             'title' => 'Pilih Kampung',
-            'villages' => Village::where('status', '=', 'Granted')->get()
+            'villages' => $village
         ]);
     }
 
