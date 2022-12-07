@@ -26,6 +26,13 @@
       </li>
 
       <li class="nav-item">
+        <a href="{{ route('kampung.activity.index') }}" class="nav-link {{ Request::is('kampung/activity*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-clipboard-list"></i>
+          Kegiatan
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a href="{{ route('kampung.masyarakat.index') }}" class="nav-link {{ Request::is('kampung/masyarakat*') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-people-group"></i>
           Masyarakat

@@ -25,8 +25,8 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
-    public function villageAdmin() {
-        return $this->belongsTo(Village::class);
+    public function village_admin() {
+        return $this->hasOne(Village::class, 'admin_id');
     }
 
     public function complaint() {

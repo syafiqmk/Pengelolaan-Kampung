@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\kampung\ActivityController;
 use App\Http\Controllers\kampung\PengumumanController;
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\kampung\InformationController;
@@ -84,6 +85,7 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
 
     Route::resource('/kampung/pengumuman', PengumumanController::class);
     Route::resource('/kampung/information', InformationController::class);
+    Route::resource('/kampung/activity', ActivityController::class);
 
     Route::controller(KampungMasyarakatController::class)->name('masyarakat.')->group(function() {
         Route::get('/kampung/masyarakat', 'index')->name('index');

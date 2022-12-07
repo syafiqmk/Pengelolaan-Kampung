@@ -1,11 +1,29 @@
 $(document).ready(function () {
-    let map = L.map('leaflet-map').setView([51.505, 0], 10);
+
+    let lat, long;
+    if($('#latitude').val() == '') {
+        lat = 51.505
+    } else {
+        lat = $('#latitude').val();
+    }
+
+    if($('#longitude').val() == '') {
+        long = 0
+    } else {
+        long = $('#longitude').val();
+    }
+
+    let map = L.map('leaflet-map').setView([lat, long], 10);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 20,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
     let markerGroup = L.layerGroup().addTo(map);
+
+    if((lat != '') && (long != '')) {
+        let marker = L.marker([lat, long]).addTo(markerGroup)
+    }
 
     // Get current location
     $("#lokasi-anda").click(function () {
