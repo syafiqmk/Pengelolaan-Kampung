@@ -42,4 +42,8 @@ class Village extends Model
     public function village_user() {
         return $this->hasMany(VillageUser::class);
     }
+
+    public function activity() {
+        return $this->hasMany(Activity::class);
+    }
 }

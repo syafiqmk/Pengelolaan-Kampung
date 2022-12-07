@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->hasMany(VillageOperator::class);
     }
 
+    public function emergency_public_response() {
+        return $this->hasMany(EmergencyPublicResponse::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
