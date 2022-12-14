@@ -38,5 +38,7 @@
             @endif
         </tbody>
     </table>
+
+    {{ $operators->links() }}
 @endsection
 

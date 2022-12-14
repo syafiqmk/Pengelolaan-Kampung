@@ -29,4 +29,6 @@
             @endif
         </tbody>
     </table>
+
+    {{ $villages->links() }}
 @endsection
