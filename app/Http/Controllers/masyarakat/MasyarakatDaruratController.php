@@ -4,6 +4,7 @@ namespace App\Http\Controllers\masyarakat;
 
 use App\Models\Emergency;
 use Illuminate\Http\Request;
+use App\Models\EmergencyResponse;
 use App\Http\Controllers\Controller;
 
 class MasyarakatDaruratController extends Controller
@@ -68,6 +69,14 @@ class MasyarakatDaruratController extends Controller
             'title' => 'Laporan Darurat',
             'emergencies' => $emergencies->paginate(10),
             'count' => $emergencies->count()
+        ]);
+    }
+
+    public function historyDetail(Emergency $darurat) {
+        return view('masyarakat.darurat.detail', [
+            'title' => 'Detail Laporan Darurat',
+            'emergency' => $darurat,
+            'responses' => EmergencyResponse::where('emergency_id', '=', $darurat->id)->orderBy('id', 'DESC')
         ]);
     }
 }

@@ -153,6 +153,7 @@ Route::middleware('IsUser')->name('masyarakat.')->group(function() {
         Route::get('/masyarakat/emergency/history', 'history')->name('history');
         Route::get('/masyarakat/emergency/history-proses', 'historyProses')->name('historyProses');
         Route::get('/masyarakat/emergency/history-selesai', 'historySelesai')->name('historySelesai');
+        Route::get('/masyarakat/emergency/history/{darurat}', 'historyDetail')->name('historyDetail');
     });
 });
 

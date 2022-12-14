@@ -41,7 +41,7 @@
                         <td>{{ $emergency->access }}</td>
                         <td>{{ date('l, d M Y', strtotime($emergency->created_at)) }} | {{ $emergency->created_at->diffForHumans() }}</td>
                         <td>
-                            <a href="" class="btn btn-success"><i class="fa-solid fa-book"></i> Detail</a>
+                            <a href="{{ route('masyarakat.darurat.historyDetail', $emergency->id) }}" class="btn btn-success"><i class="fa-solid fa-book"></i> Detail</a>
                         </td>
                     </tr>
                 @endforeach
