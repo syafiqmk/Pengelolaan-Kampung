@@ -45,6 +45,13 @@
           Pengaduan
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('kampung.operator.index') }}" class="nav-link {{ Request::is('kampung/operator*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-truck-medical"></i>
+          Operator
+        </a>
+      </li>
       
     </ul>
     <hr>

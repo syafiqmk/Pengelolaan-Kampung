@@ -13,6 +13,7 @@ use App\Http\Controllers\kampung\AdminKampungController;
 use App\Http\Controllers\masyarakat\MasyarakatController;
 use App\Http\Controllers\kampung\KampungPengaduanController;
 use App\Http\Controllers\kampung\KampungMasyarakatController;
+use App\Http\Controllers\kampung\KampungOperatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,14 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
         Route::get('/kampung/pengaduan', 'index')->name('index');
         Route::get('/kampung/pengaduan/{category}', 'category')->name('category');
         Route::get('/kampung/pengaduan/detail/{complaint}', 'detail')->name('detail');
+    });
+
+    Route::controller(KampungOperatorController::class)->name('operator.')->group(function() {
+        Route::get('/kampung/operator', 'index')->name('index');
+        Route::get('/kampung/operator/tambah', 'tambah')->name('tambah');
+        Route::get('/kampung/operator/tambah/{operator}', 'tambahDetail')->name('tambahDetail');
+        Route::get('/kampung/operator/tambah/{operator}/process', 'tambahProcess')->name('tambahProcess');
+        Route::get('/kampung/operator/{operator}', 'detail')->name('detail');
     });
 });
 
