@@ -174,4 +174,12 @@ Route::middleware('IsOperator')->controller(OperatorController::class)->name('op
     Route::get('/operator/private/{darurat}/proses', 'proses')->name('proses');
     Route::post('/operator/private/response', 'response')->name('response');
     Route::get('/operator/private/{darurat}/selesai', 'selesai')->name('selesai');
+
+    // Public
+    Route::get('/operator/public', 'public')->name('public');
+    Route::get('/operator/public/{darurat}', 'publicDetail')->name('publicDetail');
+    Route::get('/operator/publikasi', 'publikasi')->name('publikasi');
+    Route::get('/operator/publikasi/create', 'publikasiCreate')->name('publikasiCreate');
+    Route::post('/operator/publikasi/store', 'publikasiStore')->name('publikasiStore');
+    Route::get('/operator/publikasi/{publikasi}', 'publikasiDetail')->name('publikasiDetail');
 });

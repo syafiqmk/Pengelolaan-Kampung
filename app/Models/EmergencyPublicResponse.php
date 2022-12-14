@@ -16,6 +16,6 @@ class EmergencyPublicResponse extends Model
     }
 
     public function village() {
-        return $this->belongsTo(Village::class, 'Village_id');
+        return $this->belongsTo(Village::class, 'village_id');
     }
 }

@@ -46,4 +46,8 @@ class Village extends Model
     public function activity() {
         return $this->hasMany(Activity::class);
     }
+
+    public function emergency_public_response() {
+        return $this->hasMany(EmergencyPublicResponse::class);
+    }
 }

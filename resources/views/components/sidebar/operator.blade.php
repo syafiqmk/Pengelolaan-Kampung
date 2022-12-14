@@ -17,6 +17,13 @@
           Laporan Private
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('operator.public') }}" class="nav-link {{ (Request::is('operator/public*') || (Request::is('operator/publikasi*'))) ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-lock-open"></i>
+          Laporan Public
+        </a>
+      </li>
       
       <li class="nav-item">
         <a href="{{ route('operator.kampung') }}" class="nav-link {{ Request::is('operator/kampung*') ? 'active' : '' }}" aria-current="page">

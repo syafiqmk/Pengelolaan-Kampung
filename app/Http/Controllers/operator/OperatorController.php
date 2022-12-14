@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\VillageOperator;
 use App\Models\EmergencyResponse;
 use App\Http\Controllers\Controller;
+use App\Models\EmergencyPublicResponse;
 
 class OperatorController extends Controller
 {
@@ -128,5 +129,75 @@ class OperatorController extends Controller
         } else {
             return redirect()->back()->with('danger', 'Laporan gagal diselesaikan!');
         }
+    }
+
+
+    // Public
+    public function public() {
+
+        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('access', '=', 'Public')->orderBy('id', 'DESC');
+
+        return view('operator.public.index', [
+            'title' => 'Laporan Public',
+            'emergencies' => $emergencies->paginate(10),
+            'count' => $emergencies->count()
+        ]);
+    }
+
+    public function publicDetail(Emergency $darurat) {
+        return view('operator.public.detail', [
+            'title' => 'Detail Laporan',
+            'emergency' => $darurat
+        ]);
+    }
+
+    public function publikasi() {
+        $publicities = EmergencyPublicResponse::where('operator_id', '=', auth()->user()->id)->orderBy('id', 'DESC');
+
+        return view('operator.public.publikasi', [
+            'title' => 'Publikasi',
+            'publicities' => $publicities->paginate(10),
+            'count' => $publicities->count()
+        ]);
+    }
+
+    public function publikasiCreate() {
+
+        $villages = Village::whereIn('id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->orderBy('id', 'DESC');
+
+        return view('operator.public.createPublikasi', [
+            'title' => 'Buat Publikasi',
+            'villages' => $villages->get(),
+        ]);
+    }
+
+    public function publikasiStore(Request $request) {
+        $validate = $request->validate([
+            'village_id' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'description' => 'required'
+        ]);
+
+        $create = EmergencyPublicResponse::create([
+            'description' => $validate['description'],
+            'latitude' => $validate['latitude'],
+            'longitude' => $validate['longitude'],
+            'village_id' => $validate['village_id'],
+            'operator_id' => auth()->user()->id
+        ]);
+
+        if($create) {
+            return redirect()->route('operator.publikasi')->with('success', 'Publikasi berhasil dibuat!');
+        } else {
+            return redirect()->route('operator.publikasi')->with('danger', 'Publikasi gagal dibuat!');
+        }
+    }
+
+    public function publikasiDetail(EmergencyPublicResponse $publikasi) {
+        return view('operator.public.detailPublikasi', [
+            'title' => 'Detail Publikasi',
+            'publikasi' => $publikasi
+        ]);
     }
 }
