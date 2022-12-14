@@ -20,10 +20,10 @@ return new class extends Migration
             $table->text('longitude')->nullable();
             $table->enum("type", ["Pemadam Kebakaran", "Ambulans", "Polisi"]);
             $table->enum("access", ["Public", "Private"]);
-            $table->enum("status", ["Dilaporkan", "Proses", "Selesai"]);
+            $table->enum("status", ["Dilaporkan", "Diproses", "Selesai"]);
             $table->foreignId("user_id")->constrained("users");
             $table->foreignId("village_id")->constrained("villages");
-            $table->foreignId("operator_id")->constrained("users")->nullable();
+            $table->foreignId("operator_id")->nullable()->constrained("users");
             $table->timestamps();
         });
     }

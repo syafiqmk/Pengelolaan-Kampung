@@ -41,7 +41,7 @@ class OperatorController extends Controller
     // Private
     public function private() {
 
-        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Dilaporkan')->where('access', '=', 'Private')->orderBy('id', 'DESC');
+        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Dilaporkan')->where('access', '=', 'Private')->where('type', '=', auth()->user()->type)->orderBy('id', 'DESC');
 
         return view('operator.private.index', [
             'title' => 'Laporan Private',
@@ -52,7 +52,7 @@ class OperatorController extends Controller
 
     public function privateProses() {
 
-        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Diproses')->where('access', '=', 'Private')->where('operator_id', '=', auth()->user()->id)->orderBy('id', 'DESC');
+        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Diproses')->where('access', '=', 'Private')->where('operator_id', '=', auth()->user()->id)->where('type', '=', auth()->user()->type)->orderBy('id', 'DESC');
 
         return view('operator.private.diproses', [
             'title' => 'Laporan Private',
@@ -63,7 +63,7 @@ class OperatorController extends Controller
 
     public function privateSelesai() {
 
-        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Selesai')->where('access', '=', 'Private')->where('operator_id', '=', auth()->user()->id)->orderBy('id', 'DESC');
+        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('status', '=', 'Selesai')->where('access', '=', 'Private')->where('operator_id', '=', auth()->user()->id)->where('type', '=', auth()->user()->type)->orderBy('id', 'DESC');
 
         return view('operator.private.selesai', [
             'title' => 'Laporan Private',
@@ -135,7 +135,7 @@ class OperatorController extends Controller
     // Public
     public function public() {
 
-        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('access', '=', 'Public')->orderBy('id', 'DESC');
+        $emergencies = Emergency::whereIn('village_id', VillageOperator::where('operator_id', '=', auth()->user()->id)->select('village_id'))->where('access', '=', 'Public')->where('type', '=', auth()->user()->type)->orderBy('id', 'DESC');
 
         return view('operator.public.index', [
             'title' => 'Laporan Public',
