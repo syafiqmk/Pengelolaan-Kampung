@@ -4,7 +4,7 @@
     <span class="fs-3 fw-semibold">Laporan Darurat</span>
     <div class="btn-group float-end">
         <a href="{{ route('masyarakat.darurat.history') }}" class="btn btn-primary">Riwayat</a>
-        <a href="" class="btn btn-outline-success">Publikasi</a>
+        <a href="{{ route('masyarakat.publikasi.index') }}" class="btn btn-outline-success">Publikasi</a>
     </div>
 @endsection
 

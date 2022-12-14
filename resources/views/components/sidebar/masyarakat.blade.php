@@ -19,7 +19,7 @@
       </li>
       
       <li class="nav-item">
-        <a href="{{ route('masyarakat.darurat.history') }}" class="nav-link {{ Request::is('masyarakat/emergency*') ? 'active' : '' }}" aria-current="page">
+        <a href="{{ route('masyarakat.darurat.history') }}" class="nav-link {{ (Request::is('masyarakat/emergency*')|| (Request::is('masyarakat/publikasi*'))) ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-truck-medical"></i>
           Laporan Darurat
         </a>

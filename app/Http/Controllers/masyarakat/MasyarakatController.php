@@ -9,6 +9,7 @@ use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Models\ComplaintCategory;
 use App\Http\Controllers\Controller;
+use App\Models\EmergencyPublicResponse;
 
 class MasyarakatController extends Controller
 {
@@ -120,6 +121,26 @@ class MasyarakatController extends Controller
         return view('masyarakat.activity.detail', [
             'title' => $activity->title,
             'activity' => $activity
+        ]);
+    }
+
+
+    // Publikasi
+    public function publikasi() {
+
+        $publikasi = EmergencyPublicResponse::where('village_id', '=', auth()->user()->village_user->village_id)->orderBy('id', 'DESC');
+
+        return view('masyarakat.publikasi.index', [
+            'title' => 'Publikasi',
+            'publikasi' => $publikasi->paginate(10),
+            'count' => $publikasi->count()
+        ]);
+    }
+
+    public function publikasiDetail(EmergencyPublicResponse $publikasi) {
+        return view('masyarakat.publikasi.detail', [
+            'title' => 'Detail Publikasi',
+            'publikasi' => $publikasi
         ]);
     }
 }

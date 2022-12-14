@@ -141,6 +141,12 @@ Route::middleware('IsUser')->name('masyarakat.')->group(function() {
             Route::get('/masyarakat/activity', 'kegiatan')->name('index');
             Route::get('/masyarakat/activity/{activity}', 'kegiatanDetail')->name('detail');
         });
+
+        // publikasi
+        Route::name('publikasi.')->group(function() {
+            Route::get('/masyarakat/publikasi', 'publikasi')->name('index');
+            Route::get('/masyarakat/publikasi/{publikasi}', 'publikasiDetail')->name('detail');
+        });
     });
 
     // Emergency
