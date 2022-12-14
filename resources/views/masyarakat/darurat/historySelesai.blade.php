@@ -12,9 +12,9 @@
     <div class="mb-3">
         <span class="fs-5">History Laporan Darurat</span>
         <div class="btn-group float-end">
-            <a href="{{ route('masyarakat.darurat.history') }}" class="btn btn-primary">Dilaporkan</a>
+            <a href="{{ route('masyarakat.darurat.history') }}" class="btn btn-outline-primary">Dilaporkan</a>
             <a href="{{ route('masyarakat.darurat.historyProses') }}" class="btn btn-outline-warning">Diproses</a>
-            <a href="{{ route('masyarakat.darurat.historySelesai') }}" class="btn btn-outline-success">Selesai</a>
+            <a href="{{ route('masyarakat.darurat.historySelesai') }}" class="btn btn-success">Selesai</a>
         </div>
     </div>
 

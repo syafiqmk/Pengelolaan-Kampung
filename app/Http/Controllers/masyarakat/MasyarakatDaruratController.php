@@ -50,4 +50,24 @@ class MasyarakatDaruratController extends Controller
             'count' => $emergencies->count()
         ]);
     }
+
+    public function historyProses() {
+        $emergencies = Emergency::where('user_id', '=', auth()->user()->id)->where('status', '=', 'Diproses')->orderBy('id', 'DESC');
+
+        return view('masyarakat.darurat.historyProses', [
+            'title' => 'Laporan Darurat',
+            'emergencies' => $emergencies->paginate(10),
+            'count' => $emergencies->count()
+        ]);
+    }
+
+    public function historySelesai() {
+        $emergencies = Emergency::where('user_id', '=', auth()->user()->id)->where('status', '=', 'Selesai')->orderBy('id', 'DESC');
+
+        return view('masyarakat.darurat.historySelesai', [
+            'title' => 'Laporan Darurat',
+            'emergencies' => $emergencies->paginate(10),
+            'count' => $emergencies->count()
+        ]);
+    }
 }
