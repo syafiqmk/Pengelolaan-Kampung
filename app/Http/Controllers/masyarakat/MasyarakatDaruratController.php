@@ -76,7 +76,7 @@ class MasyarakatDaruratController extends Controller
         return view('masyarakat.darurat.detail', [
             'title' => 'Detail Laporan Darurat',
             'emergency' => $darurat,
-            'responses' => EmergencyResponse::where('emergency_id', '=', $darurat->id)->orderBy('id', 'DESC')
+            'responses' => EmergencyResponse::where('emergency_id', '=', $darurat->id)->orderBy('id', 'DESC')->get()
         ]);
     }
 }

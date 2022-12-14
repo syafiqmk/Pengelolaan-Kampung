@@ -12,6 +12,13 @@
       </li>
 
       <li class="nav-item">
+        <a href="{{ route('operator.private') }}" class="nav-link {{ Request::is('operator/private*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-lock"></i>
+          Laporan Private
+        </a>
+      </li>
+      
+      <li class="nav-item">
         <a href="{{ route('operator.kampung') }}" class="nav-link {{ Request::is('operator/kampung*') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-people-roof"></i>
           Kampung

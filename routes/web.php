@@ -165,4 +165,13 @@ Route::middleware('IsOperator')->controller(OperatorController::class)->name('op
     // Kampung
     Route::get('/operator/kampung', 'kampung')->name('kampung');
     Route::get('/operator/kampung/{village}', 'kampungDetail')->name('kampungDetail');
+
+    // Private
+    Route::get('/operator/private', 'private')->name('private');
+    Route::get('/operator/private-proses', 'privateProses')->name('privateProses');
+    Route::get('/operator/private-selesai', 'privateSelesai')->name('privateSelesai');
+    Route::get('/operator/private/{darurat}', 'privateDetail')->name('privateDetail');
+    Route::get('/operator/private/{darurat}/proses', 'proses')->name('proses');
+    Route::post('/operator/private/response', 'response')->name('response');
+    Route::get('/operator/private/{darurat}/selesai', 'selesai')->name('selesai');
 });
