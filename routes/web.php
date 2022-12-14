@@ -14,6 +14,7 @@ use App\Http\Controllers\masyarakat\MasyarakatController;
 use App\Http\Controllers\kampung\KampungPengaduanController;
 use App\Http\Controllers\kampung\KampungMasyarakatController;
 use App\Http\Controllers\kampung\KampungOperatorController;
+use App\Http\Controllers\masyarakat\MasyarakatDaruratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,29 +116,41 @@ Route::middleware('IsAdminKampung')->name('kampung.')->group(function() {
 
 
 // Masyarakat Route
-Route::middleware('IsUser')->controller(MasyarakatController::class)->name('masyarakat.')->group(function() {
-    Route::get('/masyarakat', 'index')->name('index');
-
-    // Pengumuman
-    Route::get('/masyarakat/pengumuman', 'pengumuman')->name('pengumuman');
-    Route::get('/masyarakat/pengumuman/{pengumuman}', 'detailPengumuman')->name('pengumumanDetail');
-
-    // Informasi
-    Route::get('/masyarakat/informasi', 'information')->name('information');
-    Route::get('/masyarakat/informasi/{information}', 'detailInformation')->name('informationDetail');
-
-    // Pengaduan
-    Route::name('pengaduan.')->group(function() {
-        Route::get('/masyarakat/pengaduan', 'pengaduan')->name('index');
-        Route::get('/masyarakat/pengaduan/baru', 'buatPengaduan')->name('create');
-        Route::post('/masyarakat/pengaduan/baru', 'buatPengaduanProcess')->name('store');
-        Route::get('/masyarakat/pengaduan/{complaint}', 'pengaduanDetail')->name('detail');
+Route::middleware('IsUser')->name('masyarakat.')->group(function() {
+    Route::controller(MasyarakatController::class)->group(function() {
+        Route::get('/masyarakat', 'index')->name('index');
+    
+        // Pengumuman
+        Route::get('/masyarakat/pengumuman', 'pengumuman')->name('pengumuman');
+        Route::get('/masyarakat/pengumuman/{pengumuman}', 'detailPengumuman')->name('pengumumanDetail');
+    
+        // Informasi
+        Route::get('/masyarakat/informasi', 'information')->name('information');
+        Route::get('/masyarakat/informasi/{information}', 'detailInformation')->name('informationDetail');
+    
+        // Pengaduan
+        Route::name('pengaduan.')->group(function() {
+            Route::get('/masyarakat/pengaduan', 'pengaduan')->name('index');
+            Route::get('/masyarakat/pengaduan/baru', 'buatPengaduan')->name('create');
+            Route::post('/masyarakat/pengaduan/baru', 'buatPengaduanProcess')->name('store');
+            Route::get('/masyarakat/pengaduan/{complaint}', 'pengaduanDetail')->name('detail');
+        });
+    
+        // Kegiatan
+        Route::name('activity.')->group(function() {
+            Route::get('/masyarakat/activity', 'kegiatan')->name('index');
+            Route::get('/masyarakat/activity/{activity}', 'kegiatanDetail')->name('detail');
+        });
     });
 
-    // Kegiatan
-    Route::name('activity.')->group(function() {
-        Route::get('/masyarakat/activity', 'kegiatan')->name('index');
-        Route::get('/masyarakat/activity/{activity}', 'kegiatanDetail')->name('detail');
+    // Emergency
+    Route::controller(MasyarakatDaruratController::class)->name('darurat.')->group(function() {
+        // Create Emergency
+        Route::get('/masyarakat/emergency/create', 'create')->name('create');
+        Route::post('/masyarakat/emergency/create-process', 'createProcess')->name('createProcess');
+
+        // History
+        Route::get('/masyarakat/emergency/history', 'history')->name('history');
     });
 });
 

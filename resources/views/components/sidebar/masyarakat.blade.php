@@ -5,9 +5,23 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
+        <a href="{{ route('masyarakat.darurat.create') }}" class="nav-link bg-danger text-white" aria-current="page">
+          <i class="fa-solid fa-truck-medical"></i>
+          Buat Laporan Darurat
+        </a>
+      </li>
+      
+      <li class="nav-item">
         <a href="{{ route('masyarakat.index') }}" class="nav-link {{ Request::is('masyarakat') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-house"></i>
           Home
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('masyarakat.darurat.history') }}" class="nav-link {{ Request::is('masyarakat/emergency*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-truck-medical"></i>
+          Laporan Darurat
         </a>
       </li>
       
