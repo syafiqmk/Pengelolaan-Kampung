@@ -9,6 +9,10 @@
         <div class="col-md-7">
             @include('components.alerts')
 
+            <input type="hidden" name="" id="latitude" value="{{ $operator->latitude }}">
+            <input type="hidden" name="" id="longitude" value="{{ $operator->longitude }}">
+            <div id="leaflet-map"></div>
+
             <table class="table">
                 <tr>
                     <td>Nama</td>
@@ -48,4 +52,6 @@
             @endif
         </div>
     </div>
+
+    <script src="/js/map-still.js"></script>
 @endsection

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('emergency_public_responses', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Pemadam Kebakaran', 'Ambulans', 'Polisi']);
             $table->text('description');
             $table->text('latitude');
             $table->text('longitude');

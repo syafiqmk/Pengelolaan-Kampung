@@ -34,7 +34,11 @@ class User extends Authenticatable
     }
 
     public function emergency() {
-        return $this->hasMany(Emergency::class);
+        return $this->hasMany(Emergency::class, 'user_id');
+    }
+
+    public function emergency_operator() {
+        return $this->hasMany(Emergency::class, 'operator_id');
     }
 
     public function emergency_response() {

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->text("description");
             $table->foreignId("emergency_id")->constrained("emergencies");
-            $table->foreignId("operator_id")->constrained("users");
             $table->timestamps();
         });
     }
