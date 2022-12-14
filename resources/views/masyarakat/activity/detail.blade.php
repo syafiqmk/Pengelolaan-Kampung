@@ -15,7 +15,9 @@
 
     <div id="leaflet-map"></div>
 
-    {!! $activity->description !!}
+    <div class="mt-3">
+        {!! $activity->description !!}
+    </div>
 
     <script src="/js/map-still.js"></script>
 @endsection
