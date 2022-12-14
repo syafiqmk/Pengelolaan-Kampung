@@ -39,6 +39,7 @@ class AuthController extends Controller
                     break;
 
                 case 'Operator':
+                    return redirect()->route('operator.index');
                     break;
 
                 case 'User':
@@ -163,6 +164,8 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'type' => 'required'
         ]);
 
@@ -170,6 +173,8 @@ class AuthController extends Controller
             'name' => ucwords($validate['name']),
             'email' => $validate['email'],
             'password' => bcrypt($validate['password']),
+            'latitude' => $validate['latitude'],
+            'longitude' => $validate['longitude'],
             'address' => $validate['address'],
             'role' => 'Operator',
             'status' => 'Waiting',

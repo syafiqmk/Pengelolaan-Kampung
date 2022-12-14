@@ -51,7 +51,7 @@
                 <input type="hidden" name="longitude" id="longitude">
 
                 <div class="mb-3">
-                    <label for="">Letak</label>
+                    <label for="">Lokasi</label>
                     <div id="leaflet-map"></div>
                     <a href="javascript:void(0)" class="btn btn-primary mt-1" id="lokasi-anda">Lokasi Anda</a>
                 </div>

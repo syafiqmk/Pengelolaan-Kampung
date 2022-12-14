@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\kampung\ActivityController;
+use App\Http\Controllers\operator\OperatorController;
 use App\Http\Controllers\kampung\PengumumanController;
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\kampung\InformationController;
@@ -129,4 +130,10 @@ Route::middleware('IsUser')->controller(MasyarakatController::class)->name('masy
         Route::get('/masyarakat/activity', 'kegiatan')->name('index');
         Route::get('/masyarakat/activity/{activity}', 'kegiatanDetail')->name('detail');
     });
+});
+
+
+// Operatato Route
+Route::middleware('IsOperator')->controller(OperatorController::class)->name('operator.')->group(function() {
+    Route::get('/operator', 'index')->name('index');
 });

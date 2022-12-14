@@ -40,6 +40,8 @@
                         <a href="{{ route("kampung.index") }}" class="btn bg-dark text-white">Dashboard</a>
                     @elseif (auth()->user()->role == "User")
                         <a href="{{ route("kampung.index") }}" class="btn bg-dark text-white">Dashboard</a>
+                    @elseif (auth()->user()->role == "Operator")
+                        <a href="{{ route("operator.index") }}" class="btn bg-dark text-white">Dashboard</a>
                     @endif
                 @endif
             </div>

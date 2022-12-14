@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('latitude')->nullable();
+            $table->text('longitude')->nullable();
             $table->text("address")->nullable();
             $table->enum("role", ["Admin", "Admin Kampung", "Operator", "User"]);
             $table->enum("status", ["Waiting", "Granted"]);

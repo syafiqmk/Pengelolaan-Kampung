@@ -5,7 +5,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="{{ route('operator.index') }}" class="nav-link active" aria-current="page">
+        <a href="{{ route('operator.index') }}" class="nav-link {{ Request::is('operator') ? 'active' : '' }}" aria-current="page">
           <i class="fa-solid fa-house"></i>
           Home
         </a>
