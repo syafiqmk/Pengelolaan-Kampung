@@ -10,6 +10,13 @@
           Home
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('operator.kampung') }}" class="nav-link {{ Request::is('operator/kampung*') ? 'active' : '' }}" aria-current="page">
+          <i class="fa-solid fa-people-roof"></i>
+          Kampung
+        </a>
+      </li>
       
     </ul>
     <hr>

@@ -145,4 +145,8 @@ Route::middleware('IsUser')->controller(MasyarakatController::class)->name('masy
 // Operatato Route
 Route::middleware('IsOperator')->controller(OperatorController::class)->name('operator.')->group(function() {
     Route::get('/operator', 'index')->name('index');
+
+    // Kampung
+    Route::get('/operator/kampung', 'kampung')->name('kampung');
+    Route::get('/operator/kampung/{village}', 'kampungDetail')->name('kampungDetail');
 });
